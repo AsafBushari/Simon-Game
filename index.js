@@ -9,13 +9,13 @@ var userEventClick;
 var counter = 0;
 removeClick();
 $("#menu_div").addClass("addMenuScreen");
-//setInterval(  function(){
+setInterval(  function(){
 
   $("#start_button").animate({opacity: 0.5},200).animate({opacity:1}, 200);
 
 
 
-//},1000);
+},1000);
 
 $("#red, #blue, #yellow, #green").click( function(event){
 
