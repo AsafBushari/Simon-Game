@@ -1,8 +1,8 @@
-var blue_sound = new Audio("/blue.mp3");
-var green_sound = new Audio("/green.mp3");
-var red_sound = new Audio("/red.mp3");
-var yellow_sound = new Audio("/yellow.mp3");
-var wrong_sound = new Audio("/wrong.mp3");
+var blue_sound = new Audio("blue.mp3");
+var green_sound = new Audio("green.mp3");
+var red_sound = new Audio("red.mp3");
+var yellow_sound = new Audio("yellow.mp3");
+var wrong_sound = new Audio("wrong.mp3");
 var user_history = [];
 var computer_history = [];
 var userEventClick;
