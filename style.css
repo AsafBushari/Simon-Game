@@ -94,12 +94,18 @@ td{
   position: absolute;
 }
 #board_table{
+  height: 100vh;
+  width: 100vw;
   position: fixed;
   top: 50%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
   z-index: 0;
+}
+#board_table td{
+  height: 100vh;
+  width: 100vw;
 }
 #menu_div{
   z-index: 2;
