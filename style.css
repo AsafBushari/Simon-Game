@@ -103,7 +103,7 @@ td{
   transform: translate(-50%, -50%);
   z-index: 0;
 }
-#board_table td{
+#red, #green, #blue, #yellow{
   height: 100vh;
   width: 100vw;
 }
