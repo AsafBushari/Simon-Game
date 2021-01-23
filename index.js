@@ -7,103 +7,130 @@ var user_history = [];
 var computer_history = [];
 var userEventClick;
 var counter = 0;
+var my_interval = null;
+var max_score = 0;
 removeClick();
+addScore();
+intervalOn();
 $("#menu_div").addClass("addMenuScreen");
-setInterval(  function(){
 
-  $("#start_button").animate({opacity: 0.5},200).animate({opacity:1}, 200);
+function intervalOn() {
+    my_interval = setInterval(function() {
+
+    $("#start_button").animate({
+      opacity: 0.5
+    }, 200).animate({
+      opacity: 1
+    }, 200);
 
 
 
-},1000);
+  }, 1000);
 
-$("#red, #blue, #yellow, #green").click( function(event){
 
-    press(event.target.id);
-    user_history.push(event.target.id);
-    if(checkUserSuccess()){
-      if(user_history.length === computer_history.length){
-        user_history = [];
-        removeClick();
-        counter++;
-        $("#live_score").html(counter);
-        main();
-      }
+}
+function intervalOff(){
+  clearInterval(my_interval);
+
+}
+
+
+$("#red, #blue, #yellow, #green").click(function(event) {
+
+  press(event.target.id);
+  user_history.push(event.target.id);
+  if (checkUserSuccess()) {
+    if (user_history.length === computer_history.length) {
+      user_history = [];
+      removeClick();
+      counter++;
+      $("#live_score").html(counter);
+      main();
     }
-    else{
-       removeClick();
-       addScore();
-       computer_history = [];
-       user_history = [];
-       counter = 0;
-       $("#live_score").html(counter);
-       setTimeout(function(){ gameOver(); }, 150);
-    }
+  } else {
+    removeClick();
+    addScore();
+    computer_history = [];
+    user_history = [];
+    counter = 0;
+    $("#live_score").html("");
+    $("#play_label").html("ניסיון נוסף ↺");
+    intervalOn();
+    setTimeout(function() {
+      gameOver();
+    }, 150);
+  }
 
 
-  });
-
-$("#start_button").click(function(){
-  $("#menu_div").css("display","none");
-  main();
 });
 
-function main(){
-    if(computer_history.length === 0){
-      var startColor = getRandomColor();
-      press(startColor);
-      computer_history.push(startColor);
-      allowClick();
-    }
-    else{
-      rollBack();
-    }
+$("#start_button").click(function() {
+  $("#menu_div").css("display", "none");
+  $("#live_score").html(counter);
+  main();
+  intervalOff();
+});
+
+function main() {
+  if (computer_history.length === 0) {
+    var startColor = getRandomColor();
+    press(startColor);
+    computer_history.push(startColor);
+    allowClick();
+  } else {
+    rollBack();
+  }
 }
 
-function gameOver(){
+function gameOver() {
   wrong_sound.play();
-  $("#menu_div").css("display","block");
+  $("#menu_div").css("display", "block");
 }
 
-function checkUserSuccess(){
+function checkUserSuccess() {
 
-   for(var i=0; i<user_history.length; i++){
-     if(user_history[i] !== computer_history[i]){
-       return false;
-     }
-   }
-   return true;
+  for (var i = 0; i < user_history.length; i++) {
+    if (user_history[i] !== computer_history[i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
-function rollBack(){
+function rollBack() {
   var second = 1;
-  for(var i=0; i<computer_history.length; i++){
-    if(computer_history[i] === "red"){
-      setTimeout(function(){ press("red"); }, second * 1000);
-    }
-    else if(computer_history[i] === "green"){
-      setTimeout(function(){ press("green"); }, second * 1000)
-    }
-    else if(computer_history[i] === "blue"){
-      setTimeout(function(){ press("blue"); }, second * 1000)
-    }
-    else{
-      setTimeout(function(){ press("yellow"); }, second * 1000)
+  for (var i = 0; i < computer_history.length; i++) {
+    if (computer_history[i] === "red") {
+      setTimeout(function() {
+        press("red");
+      }, second * 700);
+    } else if (computer_history[i] === "green") {
+      setTimeout(function() {
+        press("green");
+      }, second * 700)
+    } else if (computer_history[i] === "blue") {
+      setTimeout(function() {
+        press("blue");
+      }, second * 700)
+    } else {
+      setTimeout(function() {
+        press("yellow");
+      }, second * 700)
     }
     second++;
   }
-  setTimeout(function(){
-      var randomColor = getRandomColor();
-      computer_history.push(randomColor);
-      press(randomColor);
-      allowClick();
+  setTimeout(function() {
+    var randomColor = getRandomColor();
+    computer_history.push(randomColor);
+    press(randomColor);
+    allowClick();
 
-   }, second * 1000);
+  }, second * 700);
 }
 
-function getRandomColor(){
-  var randomNum = Math.round(Math.random()*3 +1);
-  switch(randomNum){
+function getRandomColor() {
+  var randomNum = Math.round(Math.random() * 3 + 1);
+  switch (randomNum) {
     case 1:
       return "green";
       break;
@@ -119,37 +146,57 @@ function getRandomColor(){
   }
 }
 
-function press(color){
-  switch(color){
+function press(color) {
+  switch (color) {
     case "red":
-      $("#red").animate({opacity:.2},200).animate({opacity:1},100);
+      $("#red").animate({
+        opacity: .2
+      }, 100).animate({
+        opacity: 1
+      }, 50);
       red_sound.play();
       break;
     case "blue":
-      $("#blue").animate({opacity:.2},200).animate({opacity:1},100);
+      $("#blue").animate({
+        opacity: .2
+      }, 100).animate({
+        opacity: 1
+      }, 50);
       blue_sound.play();
       break;
     case "green":
-      $("#green").animate({opacity:.2},200).animate({opacity:1},100);
+      $("#green").animate({
+        opacity: .2
+      }, 100).animate({
+        opacity: 1
+      }, 50);
       green_sound.play();
       break;
     case "yellow":
-      $("#yellow").animate({opacity:.2},200).animate({opacity:1},100);
+      $("#yellow").animate({
+        opacity: .2
+      }, 100).animate({
+        opacity: 1
+      }, 50);
       yellow_sound.play();
       break;
   }
 }
 
 
-function allowClick(){
+function allowClick() {
   $("#red, #blue, #yellow, #green").removeClass("removeClick");
 
- }
-function removeClick(){
+}
+
+function removeClick() {
   $("#red, #blue, #yellow, #green").addClass("removeClick");
 }
-function addScore(){
 
-  $("#score_table").append("<tr> <td>" + counter + "</td>  </tr>");
+function addScore() {
+  if(counter>=max_score){
+    max_score = counter;
+    $("#best_score").html(max_score);
+  }
 
 }
