@@ -67,8 +67,9 @@ td{
   pointer-events: none;
 }
 .circle{
-  height: 100px;
-  width: 100px;
+  display: table;
+  height: 350px;
+  width: 350px;
   border-radius: 50%;
   background-color: #09090996;
   position: fixed;
@@ -77,6 +78,14 @@ td{
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
   z-index: 1;
+}
+.circle p{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 100px;
+  color: white;
+
 
 }
 #score_table{
