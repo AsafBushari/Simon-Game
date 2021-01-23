@@ -26,6 +26,7 @@ $("#red, #blue, #yellow, #green").click( function(event){
         user_history = [];
         removeClick();
         counter++;
+        $("#live_score").html(counter);
         main();
       }
     }
@@ -35,6 +36,7 @@ $("#red, #blue, #yellow, #green").click( function(event){
        computer_history = [];
        user_history = [];
        counter = 0;
+       $("#live_score").html(counter);
        setTimeout(function(){ gameOver(); }, 150);
     }
 
