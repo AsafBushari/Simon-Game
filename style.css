@@ -9,6 +9,7 @@ h1{
   text-align: center;
   font-size: 60px;
   margin: 0;
+  margin-top: 50px;
 }
 #start_button{
   font-size: 50px;
@@ -19,8 +20,8 @@ h1{
     left: 0;
     right: 0;
     bottom: 0;
-    height: 350px;
-    width: 350px;
+    height: 400px;
+    width: 400px;
     background-color: transparent;
     color: white;
     border-radius: 50%;
@@ -32,14 +33,14 @@ h1{
 }
 #red, #green, #yellow, #blue{
    height: 100vh;
-  width: 100vw;
+    width: 100vw;
   /*border: solid black 10px;*/
   /*border-radius: 30px;*/
 }
 #red{background-color: #b51c1c;}
 #green{background-color: green;}
-#yellow{background-color: yellow;}
-#blue{background-color: blue;}
+#yellow{background-color: #d6d616;}
+#blue{background-color: #0f0fa5;}
 table{
   margin: 0 auto;
   border-spacing: 0;
@@ -47,29 +48,13 @@ table{
 td{
   padding: 0;
 }
-.yellow_pressed{
-  background-color: #ffff80 !important;
-
-}
-.green_pressed{
-  background-color: #81f381 !important;
-
-}
-.blue_pressed{
-  background-color: #5151e3 !important;
-
-}
-.red_pressed{
-  background-color: #e16868 !important;
-
-}
 .removeClick{
   pointer-events: none;
 }
 .circle{
   display: table;
-  height: 350px;
-  width: 350px;
+  height: 400px;
+  width: 400px;
   border-radius: 50%;
   background-color: #09090996;
   position: fixed;
@@ -83,7 +68,7 @@ td{
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-  font-size: 100px;
+  font-size: 150px;
   color: white;
 
 
@@ -114,4 +99,8 @@ td{
 }
 #menu_div{
   z-index: 2;
+}
+
+#play_label, #best_score{
+  margin: 0;
 }
