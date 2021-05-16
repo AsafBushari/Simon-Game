@@ -65,7 +65,7 @@ td{
   z-index: 1;
 }
 .circle:hover{
-  cruser: pointer;
+  cursor: pointer;
 }
 .circle p{
   display: table-cell;
